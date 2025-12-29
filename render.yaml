@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: text-justification-api
+    runtime: node
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TOKEN_SECRET
+        generateValue: true
+      - key: RATE_LIMIT_WORDS_PER_DAY
+        value: "80000"
+    healthCheckPath: /
